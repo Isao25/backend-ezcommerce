@@ -30,7 +30,7 @@ facultad13 = Facultad.objects.create(codigo="13", nombre="Facultad de Ciencias F
 facultad14 = Facultad.objects.create(codigo="14", nombre="Facultad de Ciencias Matemáticas", siglas="FCM") #
 facultad15 = Facultad.objects.create(codigo="15", nombre="Facultad de Ciencias Sociales", siglas="FCS") #
 facultad16 = Facultad.objects.create(codigo="16", nombre="Facultad de Ingeniería Geológica, Minera, Metalúrgica y Geográfica", siglas="FIGMMG") #
-facultad17 = Facultad.objects.create(codigo="17", nombre="Facultad de Ingeniería Inustrial", siglas="FII") #
+facultad17 = Facultad.objects.create(codigo="17", nombre="Facultad de Ingeniería Industrial", siglas="FII") #
 facultad18 = Facultad.objects.create(codigo="18", nombre="Facultad de Psicología", siglas="FPSI") #
 facultad19 = Facultad.objects.create(codigo="19", nombre="Facultad de Ingeniería Eléctrica y Electrónica", siglas="FIEE") #
 facultad20 = Facultad.objects.create(codigo="20", nombre="Facultad de Ingeniería de Sistemas e Informática", siglas="FISI") #
