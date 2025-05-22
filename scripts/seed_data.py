@@ -1,12 +1,15 @@
 import os
+import sys
 import django
 
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ezcommerce.settings')
 django.setup()
 
 from epica2.models import Facultad, EscuelaProfesional
 
-# Limpia datos existentes (opcional)
+#Limpiar Facultades
 Facultad.objects.all().delete()
 EscuelaProfesional.objects.all().delete()
 

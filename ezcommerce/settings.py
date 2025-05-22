@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'epica5',
     'epica6',
     'epica8',
+    'ezcommerce',
     'rest_framework_simplejwt'
 ]
 
