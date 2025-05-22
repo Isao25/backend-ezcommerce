@@ -98,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ezcommercedb',
         'USER': 'postgres',
-        'PASSWORD': 'virtualmiau16',
+        'PASSWORD': 'virtualmiau16', # ←  Contraseña
         'HOST': 'localhost',
         'PORT': '5432',
     }
