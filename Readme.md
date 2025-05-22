@@ -116,7 +116,7 @@ Nos ubicamos en la consola que tiene el entorno virtual (venv) abierto y realiza
 ## 5.2. Ejecutar Seeder
 Dentro del entorno virtual ejecutamos el seeder, el cual contiene datos iniciales para poder empezar a probar el sistema:
 
-    python scripts/seed_data.py
+    python scripts\seed_data.py
 
 La consola debería botar el siguiente mensaje indicando que todo salió bien:
 
@@ -144,3 +144,7 @@ Con esto tendremos el servidor levantado. Procedemos a acceder al enlace en loca
     http://127.0.0.1:8000/
 
 -------
+
+# Notas finales:
+## N1: 
+Dependiendo de la versión de Windows y/o el terminal que decida utilizar (si el CMD o la terminal de Visual Studio Code), puede que tenga que cambiar los backslash '\' por slash '/' al ejecutar ciertos comandos.
