@@ -147,4 +147,4 @@ Con esto tendremos el servidor levantado. Procedemos a acceder al enlace en loca
 
 # Notas finales:
 ## N1: 
-Dependiendo de la versión de Windows y/o el terminal que decida utilizar (si el CMD o la terminal de Visual Studio Code), puede que tenga que cambiar los backslash ' \ ' por slash '/' al ejecutar ciertos comandos.
+Dependiendo de la versión de Windows y/o el terminal que decida utilizar (si el CMD o la terminal de Visual Studio Code), puede que tenga que cambiar los backslash ' \ ' por slash ' / ' al ejecutar ciertos comandos.
