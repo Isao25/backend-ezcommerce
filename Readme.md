@@ -1,22 +1,22 @@
 # **BACKEND EZCOMMERCE**
 -------------------
-## 1. Instalación de programas necesarios:
-### 1.1. Descargar e instalar python del sitio oficial:
+## 1. Instalación de programas necesarios
+### 1.1. Descargar e instalar python del sitio oficial
     https://www.python.org/
 Verificamos que python esté instalado usando el siguiente comando en la consola de línea de comandos:
 
     python --version
     
 Si nos sale la versión significa que está instalado correctamente.
-### 1.2. Descargar e instalar Visual Studio Code del sitio oficial:
+### 1.2. Descargar e instalar Visual Studio Code del sitio oficial
     https://code.visualstudio.com/
-### 1.3. Descargar e instalar  Postgresql del sitio oficial:
+### 1.3. Descargar e instalar  Postgresql del sitio oficial
 Para este caso, estamos usando la versión 17 de postgresql.
 
     https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
     
 ## 2. Preparar Postgresql:
-### 2.1. Añadir variable de entorno:
+### 2.1. Añadir variable de entorno
 Una vez que tenemos instalado postgresql, añádelo a tus variables de entorno, para ello accede a las variables de entorno de Windows y en la sección "editar variables de entorno" agregas al PATH la ruta en la que se encuentra la carpeta "bin" de Postgresql. 
 **Por ejemplo:**
 
@@ -46,9 +46,9 @@ Luego, ejecutamos el comando:
 El cual nos mostrará la lista de bases de datos, si en ella sale la base de datos que acabamos de crear, significa que todo salió correctamente.
 
 ## 3. Preparación del entorno:
-### 3.1. Clonar el respositorio del backend usando GIT o descargándolo como .zip desde:
+### 3.1. Clonar el respositorio del backend usando GIT o descargándolo como .zip desde
     https://github.com/Isao25/backend-ezcommerce
-### 3.2. Crear un entorno virtual:
+### 3.2. Crear un entorno virtual
 3.2.1. Abrir una consola de linea de comandos (CMD en Windows) en la ruta del repositorio clonado en el dispositivo.
 3.2.2. Creamos un entorno virtual en la raíz del proyecto usando el siguiente comando:
 
@@ -61,12 +61,12 @@ Notaremos que entramos al entorno virtual, la consola debería verse algo así:
 
     (venv) ruta\a\backend-ezcommerce>
 
-## 3.3. Instalar dependencias:
+## 3.3. Instalar dependencias
 Para instalar todas las librerías y dependencias necesarias empleamos el siguiente comando y dentro del entorno virtual:
 
     pip install -r requirements.txt
     
-# 4. Verificar contraseña:
+# 4. Verificar contraseña
 Abrimos el IDE Visual Studio Code e instalamos las extensiones correspondientes para python. 
 Abrimos la carpeta BACKEND-EZCOMMERCE usando el menú File -> Open Folder y seleccionando la carpeta en la que se encuentra nuestro proyecto.
 El árbol de directorios debe verse así:
@@ -113,7 +113,16 @@ Nos ubicamos en la consola que tiene el entorno virtual (venv) abierto y realiza
     python manage.py makemigrations
     python manage.py migrate
 
-## 5.2. Levantar el servidor
+## 5.2. Ejecutar Seeder
+Dentro del entorno virtual ejecutamos el seeder, el cual contiene datos iniciales para poder empezar a probar el sistema:
+
+    python scripts/seed_data.py
+
+La consola debería botar el siguiente mensaje indicando que todo salió bien:
+
+    Datos iniciales insertados con éxito.
+
+## 5.3. Levantar el servidor
 Levantamos el servidor usando el comando:
 
     python manage.py runserver
