@@ -7,11 +7,14 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ezcommerce.settings')
 django.setup()
 
+from epica1.models import Usuario, UsuarioManager
 from epica2.models import Facultad, EscuelaProfesional
+from epica4.models import Etiqueta
 
 #Limpiar Facultades
 Facultad.objects.all().delete()
 EscuelaProfesional.objects.all().delete()
+Etiqueta.objects.all().delete()
 
 # Crear Facultades
 facultad1 = Facultad.objects.create(codigo="01", nombre="Facultad de Medicina - San Fernando", siglas="FMSF") #
@@ -36,8 +39,15 @@ facultad19 = Facultad.objects.create(codigo="19", nombre="Facultad de Ingenierí
 facultad20 = Facultad.objects.create(codigo="20", nombre="Facultad de Ingeniería de Sistemas e Informática", siglas="FISI") #
 
 # Crear Escuelas Profesionales
-EscuelaProfesional.objects.create(codigo="EPIS", nombre="Ingeniería de Sistemas", id_facultad=facultad20)
-EscuelaProfesional.objects.create(codigo="EPISW", nombre="Ingeniería de Software", id_facultad=facultad20)
-EscuelaProfesional.objects.create(codigo="EPCC", nombre="Ciencias de la Computación", id_facultad=facultad20)
+escuela1 = EscuelaProfesional.objects.create(codigo="EPIS", nombre="Ingeniería de Sistemas", id_facultad=facultad20)
+escuela2 = EscuelaProfesional.objects.create(codigo="EPISW", nombre="Ingeniería de Software", id_facultad=facultad20)
+escuela3 = EscuelaProfesional.objects.create(codigo="EPCC", nombre="Ciencias de la Computación", id_facultad=facultad20)
+
+# Crear Etiquetas:
+etiqueta1 = Etiqueta.objects.create(nombre="Electrónica", descripcion="Productos electrónicos.")
+etiqueta2 = Etiqueta.objects.create(nombre="Libros y Revistas", descripcion="Libros y revistas.")
+etiqueta3 = Etiqueta.objects.create(nombre="Productos Alimenticios", descripcion="Alimentos, comidas, bebidas.")
+etiqueta4 = Etiqueta.objects.create(nombre="Asesorías", descripcion="Asesorías personalizadas en cursos.")
+
 
 print("Datos iniciales insertados con éxito.")
