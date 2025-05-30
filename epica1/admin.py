@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Usuario
 
 # Cambiar de ubicación el model Group en el admin Django
 from django.contrib.auth.models import Group
@@ -17,4 +17,3 @@ class GroupAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Usuario, UsuarioAdmin)
-#admin.site.register(Group, GroupAdmin)

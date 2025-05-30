@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import Group
 from django.contrib.auth.hashers import make_password
 from django.core.validators import RegexValidator
-from epica2.models import *
+from epica2.models import EscuelaProfesional
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, nombres, username, email, password = None):
