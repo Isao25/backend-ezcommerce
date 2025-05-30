@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import action
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import *
-from .models import *
+from .serializers import ArticuloSerializer, CatalogoSerializer, EtiquetaSerializer, ImagenSerializer
+from .models import Articulo, Etiqueta, Catalogo, Imagen
 from epica1.models import Usuario
 from epica2.models import EscuelaProfesional, Facultad
 from epica1.serializers import UsuarioSerializer

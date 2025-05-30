@@ -75,7 +75,7 @@ class TipoSala(models.Model):
 
 
 class SalaChat(models.Model):
-    nombre = models.CharField("Nombre", max_length=30, blank = True, null=True)
+    nombre = models.CharField("Nombre", max_length=30, blank = True)
     tipo = models.ForeignKey(TipoSala, on_delete=models.CASCADE, verbose_name="Tipo de Sala")
     usuarios = models.ManyToManyField(Usuario, related_name="salas", verbose_name="Usuarios en la sala")
        
