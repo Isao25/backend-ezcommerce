@@ -1,5 +1,5 @@
 from django.db import models
-from epica1.models import *
+from epica1.models import Usuario
 from epica5.models import Marca
 from django.core.exceptions import ValidationError
 

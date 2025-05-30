@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import *
+from .models import Marca, Plan, Membresia
+from epica1.models import Usuario
 
 class MarcaSerializer(serializers.ModelSerializer):
     id_usuario = serializers.IntegerField(source='id_usuario.id')

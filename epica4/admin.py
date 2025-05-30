@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Etiqueta, Catalogo, Articulo, Imagen
 
 class EtiquetaAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Etiqueta._meta.fields]

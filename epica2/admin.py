@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Facultad, EscuelaProfesional
 
 class FacultadAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Facultad._meta.fields]

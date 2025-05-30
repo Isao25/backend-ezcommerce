@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import *
-from .models import *
+from .serializers import UsuarioSerializer, GroupSerializer
+from .models import Usuario, Group
 from rest_framework.permissions import AllowAny
 
 class UsuarioViewSet(viewsets.ModelViewSet):

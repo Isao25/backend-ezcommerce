@@ -11,8 +11,10 @@ django-filter==24.3
 djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
 dotenv==0.9.9
+drf-yasg==1.21.10
 gunicorn==23.0.0
 h11==0.14.0
+inflection==0.5.1
 Markdown==3.7
 packaging==24.2
 pillow==11.0.0
@@ -21,8 +23,11 @@ psycopg2-binary==2.9.10
 pycparser==2.22
 PyJWT==2.9.0
 python-dotenv==1.1.0
+pytz==2025.2
+PyYAML==6.0.2
 sqlparse==0.5.1
 typing_extensions==4.12.2
 tzdata==2024.2
+uritemplate==4.1.1
 uvicorn==0.32.0
 whitenoise==6.8.2

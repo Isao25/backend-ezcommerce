@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from .models import OrdenCompra, Detalle, TipoSala, TipoMensaje, Mensaje, SalaChat
 
 class OrdenCompraSerializer(serializers.ModelSerializer):
     id_usuario = serializers.IntegerField(source='id_usuario.id')

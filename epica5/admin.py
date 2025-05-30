@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Marca, Plan, Membresia
 
 class MarcaAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Marca._meta.fields]

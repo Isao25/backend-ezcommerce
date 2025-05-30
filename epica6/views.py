@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import *
-from .models import *
+from .serializers import OrdenCompraSerializer, DetalleSerializer, TipoMensajeSerializer, TipoSalaSerializer, SalaChatSerializer, MensajeSerializer
+from .models import OrdenCompra, Detalle, TipoSala, TipoMensaje, SalaChat, Mensaje
 from rest_framework.permissions import AllowAny
 
 class OrdenCompraViewSet(viewsets.ModelViewSet):
