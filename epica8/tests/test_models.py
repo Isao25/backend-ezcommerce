@@ -1,7 +1,7 @@
 from django.test import TestCase
 from epica1.models import Usuario
 from epica2.models import Facultad, EscuelaProfesional
-from epica8 import Reporte
+from epica8.models import Reporte
 
 class ReporteModelTests(TestCase):
     def setUp(self):

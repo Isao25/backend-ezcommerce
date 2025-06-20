@@ -4,5 +4,5 @@ from epica4 import views
 
 class TestUrls(SimpleTestCase):
     def test_index_url_resolves(self):
-        url = reverse('index')
+        url = reverse('epica4:index')  # Usar el namespace de la app
         self.assertEqual(resolve(url).func, views.index)

@@ -5,6 +5,17 @@ from django.contrib.auth.hashers import make_password
 from django.core.validators import RegexValidator
 from epica2.models import EscuelaProfesional
 
+
+class Group(models.Model):
+    name = models.CharField(max_length=100)
+    
+    class Meta:
+        app_label = 'epica1'
+    
+    def __str__(self):
+        return self.name
+
+
 class UsuarioManager(BaseUserManager):
     def create_user(self, nombres, username, email, password = None):
         if not email:
