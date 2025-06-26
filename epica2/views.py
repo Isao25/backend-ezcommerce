@@ -4,7 +4,7 @@ from rest_framework import permissions
 from .serializers import FacultadSerializer, EscuelaProfesionalSerializer
 from .models import Facultad, EscuelaProfesional
 from rest_framework.permissions import AllowAny
-
+#ViewSet de Facultad
 class FacultadViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Facultad.
@@ -24,7 +24,7 @@ class FacultadViewSet(viewsets.ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
-
+#ViewSet de EscuelaProfesional
 class EscuelaProfesionalViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de EscuelaProfesional.

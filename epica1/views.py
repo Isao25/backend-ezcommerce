@@ -4,7 +4,7 @@ from rest_framework import permissions
 from .serializers import UsuarioSerializer, GroupSerializer
 from .models import Usuario, Group
 from rest_framework.permissions import AllowAny
-
+#ViewSet de Usuario
 class UsuarioViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Usuario.
@@ -15,7 +15,8 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         permission_classes = [permissions.AllowAny]
         return [permission() for permission in permission_classes]
-
+    
+#ViewSet de Group
 class GroupViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Group.

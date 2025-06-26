@@ -3,6 +3,7 @@ from epica1.models import Usuario
 from epica5.models import Marca
 from django.core.exceptions import ValidationError
 
+#Clase Etiqueta
 class Etiqueta(models.Model):
     nombre = models.CharField("Nombre", max_length=50, unique=True)
     descripcion = models.TextField("Descripción")
@@ -10,40 +11,37 @@ class Etiqueta(models.Model):
     def __str__(self):
         return self.nombre
     class Meta:
-        verbose_name = "Etiqueta"
-        verbose_name_plural = "Etiquetas"
-        db_table = "Etiqueta"
+        verbose_name = "Etiqueta" #Nombre con el que será visible
+        verbose_name_plural = "Etiquetas" #Nombre con el que será visible el plural
+        db_table = "Etiqueta" #Tabla de la bd
 
-
+#Clase Catalogo
 class Catalogo(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name = "Dueño")
-    id_marca = models.ForeignKey(Marca, on_delete=models.CASCADE, verbose_name="Marca", null = True, blank = True)
-    capacidad_maxima = models.IntegerField("Límite", default=15)
-    espacio_ocupado = models.IntegerField("Espacio ocupado", default=0)
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name = "Dueño")  #Obligatorio
+    id_marca = models.ForeignKey(Marca, on_delete=models.CASCADE, verbose_name="Marca", null = True, blank = True) 
+    capacidad_maxima = models.IntegerField("Límite", default=15)  #Obligatorio
+    espacio_ocupado = models.IntegerField("Espacio ocupado", default=0) #automático
 
     def clean(self):
         super().clean()
         if self.espacio_ocupado > self.capacidad_maxima:
             raise ValidationError("Parece que te quedaste sin espacio. ¡Es un buen momento para actualizar tu plan!")
-        
-        if self.espacio_ocupado < 0:
+        #consistencia que evita que el espacio ocupado sea negativo
+        if self.espacio_ocupado < 0: 
             self.espacio_ocupado = 0
 
-
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs): #método de guardado
         self.full_clean()  
         if self.espacio_ocupado > 0: 
             self.id_usuario.es_vendedor = True    
             self.id_usuario.save() 
         super().save(*args, **kwargs)
 
-
-    def delete(self, *args, **kwargs):
+    def delete(self, *args, **kwargs): #Método de eliminado
         if self.id_marca == None:                    
             self.id_usuario.es_vendedor = False    
             self.id_usuario.save() 
         super().delete(*args, **kwargs)
-
 
     def __str__(self):
         if self.id_marca == None:
@@ -52,22 +50,21 @@ class Catalogo(models.Model):
             return 'Catálogo de ' + self.id_marca.nombre
     
     class Meta:
-        verbose_name = "Catálogo"
-        verbose_name_plural = "Catálogos"
-        db_table = "Catalogo"
+        verbose_name = "Catálogo" #Nombre con el que será visible
+        verbose_name_plural = "Catálogos" #Nombre con el que será visible el plural
+        db_table = "Catalogo" #Tabla de la bd
 
-
-
+#Clase Articulo
 class Articulo(models.Model):
-    id_catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE, verbose_name = "Vendedor")
+    id_catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE, verbose_name = "Vendedor") #Obligatorio
     id_marca = models.ForeignKey(Marca, on_delete=models.CASCADE, null=True, blank=True)
-    nombre = models.CharField("Nombre", max_length=100, unique=True)
-    descripcion = models.TextField("Descripción")
-    precio = models.FloatField("Precio")
-    stock = models.IntegerField("Stock disponible", default=1)
-    etiquetas = models.ManyToManyField(Etiqueta)
-    disponible = models.BooleanField("Disponible", default=True)
-    bloqueado = models.BooleanField("Bloqueado", default=False)
+    nombre = models.CharField("Nombre", max_length=100, unique=True) #Obligatorio
+    descripcion = models.TextField("Descripción") #Obligatorio
+    precio = models.FloatField("Precio") #Obligatorio
+    stock = models.IntegerField("Stock disponible", default=1) #Obligatorio / automático
+    etiquetas = models.ManyToManyField(Etiqueta) #Obligatorio
+    disponible = models.BooleanField("Disponible", default=True) #automático
+    bloqueado = models.BooleanField("Bloqueado", default=False) #automático
 
     def save(self, *args, **kwargs):
         # Incrementar el espacio ocupado solo al crear un nuevo artículo.
@@ -104,21 +101,21 @@ class Articulo(models.Model):
     def __str__(self):
         return self.nombre
     class Meta:
-        verbose_name = "Articulo"
-        verbose_name_plural = "Articulos"
-        db_table = "Articulo"
+        verbose_name = "Articulo" #Nombre con el que será visible
+        verbose_name_plural = "Articulos" #Nombre con el que será visible el plural
+        db_table = "Articulo" #Tabla de la bd
 
-
+#Clase Imagen
 class Imagen(models.Model):
-    id_articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, verbose_name = "Artículo")
-    url = models.URLField("URL")
+    id_articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, verbose_name = "Artículo") #Obligatorio
+    url = models.URLField("URL") #Obligatorio 
 
     def __str__(self):
         return self.id_articulo.nombre
     class Meta:
-        verbose_name = "Imagen"
-        verbose_name_plural = "Imagenes"
-        db_table = "Imagen"
+        verbose_name = "Imagen" #Nombre con el que será visible
+        verbose_name_plural = "Imagenes" #Nombre con el que será visible el plural
+        db_table = "Imagen" #Tabla de la bd
 
 
 

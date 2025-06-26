@@ -2,13 +2,13 @@ from rest_framework import serializers
 from .models import Etiqueta, Catalogo, Articulo, Imagen
 from epica5.models import Marca
 from epica1.models import Usuario
-
+#Serializer de Etiqueta
 class EtiquetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Etiqueta
         fields = '__all__'
 
-
+#Serializer de Catalogo
 class CatalogoSerializer(serializers.ModelSerializer):
     id_usuario = serializers.PrimaryKeyRelatedField(queryset=Usuario.objects.all())
     id_marca = serializers.SerializerMethodField()
@@ -25,7 +25,7 @@ class CatalogoSerializer(serializers.ModelSerializer):
         return obj.id_catalogo.id_marca.nombre if obj.id_catalogo.id_marca else None
     
     
-
+#Serializer de Articulo
 class ArticuloSerializer(serializers.ModelSerializer):    
     id_catalogo = serializers.PrimaryKeyRelatedField(queryset=Catalogo.objects.all())  # Directamente relacionado
     id_marca = serializers.SerializerMethodField()
@@ -62,7 +62,7 @@ class ArticuloSerializer(serializers.ModelSerializer):
         return instance
 
 
-
+#Serializer de Imagen
 class ImagenSerializer(serializers.ModelSerializer):    
     id_articulo = serializers.IntegerField(source='id_articulo.id')
 
@@ -70,7 +70,7 @@ class ImagenSerializer(serializers.ModelSerializer):
         model = Imagen
         fields = '__all__'
 
-    def create(self, validated_data):
+    def create(self, validated_data): #Crear articulo
         articulo_id = validated_data.pop('id_articulo')['id']
         
         try:
@@ -85,7 +85,7 @@ class ImagenSerializer(serializers.ModelSerializer):
         except Articulo.DoesNotExist:
             raise serializers.ValidationError({"id_articulo": "El artículo especificado no existe"})
     
-    def update(self, instance, validated_data):
+    def update(self, instance, validated_data): #Actualizar articulo
         if 'id_articulo' in validated_data:
             articulo_id = validated_data.pop('id_articulo')['id']
             try:

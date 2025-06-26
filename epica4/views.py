@@ -17,7 +17,7 @@ from rest_framework.response import Response
 from django.db.models import Q
 
 #------------------------------------------------------> Filtros <----------------------------------------------------------
-
+#Filtros Articulo
 class ArticuloFilter(filters.FilterSet):
     nombre = filters.CharFilter(field_name='nombre', lookup_expr='icontains')
     facultades = filters.CharFilter(method='filter_siglas')  # Filtro personalizado
@@ -60,7 +60,7 @@ class ArticuloFilter(filters.FilterSet):
         # Filtra el queryset aplicando todas las condiciones OR
         return queryset.filter(query)
 
-
+#Filtros de Catalogo
 class CatalogoFilter(filters.FilterSet):
     id_usuario__id_escuela__id_facultad__siglas = filters.CharFilter(
         field_name='id_usuario__id_escuela__id_facultad__siglas', lookup_expr='icontains')    
@@ -79,7 +79,7 @@ class CatalogoFilter(filters.FilterSet):
 
 
 #------------------------------------------------------> Vistas <----------------------------------------------------------
-
+#ViewSet de Etiqueta
 class EtiquetaViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Etiqueta.
@@ -99,7 +99,7 @@ class EtiquetaViewSet(viewsets.ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
-
+#ViewSet de Catalogo
 class CatalogoViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Catalogo.
@@ -120,7 +120,7 @@ class CatalogoViewSet(viewsets.ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
-
+#ViewSet de Articulo
 class ArticuloViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Articulo.
@@ -167,7 +167,7 @@ class ArticuloViewSet(viewsets.ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
-
+#ViewSet de Imagen
 class ImagenViewSet(viewsets.ModelViewSet):
     """
     API Endpoint para CRUD de Imagen.
