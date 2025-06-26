@@ -2,5 +2,5 @@ projectKey=EzCommerceBackend
 serverUrl=http://localhost:9000
 serverVersion=25.6.0.109173
 dashboardUrl=http://localhost:9000/dashboard?id=EzCommerceBackend
-ceTaskId=4f9ce56f-cd2a-464f-9d4b-d5ae6509cd5a
-ceTaskUrl=http://localhost:9000/api/ce/task?id=4f9ce56f-cd2a-464f-9d4b-d5ae6509cd5a
+ceTaskId=7ad0d9a5-f273-4c51-95c6-778bfb0faf55
+ceTaskUrl=http://localhost:9000/api/ce/task?id=7ad0d9a5-f273-4c51-95c6-778bfb0faf55

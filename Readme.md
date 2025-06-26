@@ -148,3 +148,21 @@ Con esto tendremos el servidor levantado. Procedemos a acceder al enlace en loca
 # Notas finales:
 ## N1: 
 Dependiendo de la versión de Windows y/o el terminal que decida utilizar (si el CMD o la terminal de Visual Studio Code), puede que tenga que cambiar los backslash ' \ ' por slash ' / ' al ejecutar ciertos comandos.
+
+-------------------
+
+# Ejecutar Pruebas
+
+## 1. Pytest
+    Dentro del entorno virtual (venv) ejecutamos el siguiente comando
+
+    python run_pytest.py
+
+    Esto creará el coverage.xml
+
+## Sonarscaner
+    Dentro del entorno virtual (venv) y con el admin de sonar abierto con el proyecto ya creado ejecutaremos:
+
+    python run_sonar.py
+
+
