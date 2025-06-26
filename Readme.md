@@ -154,14 +154,15 @@ Dependiendo de la versión de Windows y/o el terminal que decida utilizar (si el
 # Ejecutar Pruebas
 
 ## 1. Pytest
-    Dentro del entorno virtual (venv) ejecutamos el siguiente comando
+Dentro del entorno virtual (venv) ejecutamos el siguiente comando
+
 
     python run_pytest.py
 
-    Esto creará el coverage.xml
+Esto creará el coverage.xml
 
-## Sonarscaner
-    Dentro del entorno virtual (venv) y con el admin de sonar abierto con el proyecto ya creado ejecutaremos:
+## 2. Sonarscaner
+Dentro del entorno virtual (venv) y con el admin de sonar abierto con el proyecto ya creado ejecutaremos:
 
     python run_sonar.py
 
