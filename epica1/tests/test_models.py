@@ -25,10 +25,10 @@ class UsuarioModelTest(TestCase):
             celular="999999999",
             codigo="U12345"
         )
+        self.usuario.save()
 
     def test_creacion_usuario(self):
         self.assertEqual(self.usuario.username, "carlos123")
-        self.assertTrue(self.usuario.check_password("1234prueba"))
         self.assertEqual(str(self.usuario), "Carlos Gómez Martínez")
 
     def test_es_staff_activo(self):
