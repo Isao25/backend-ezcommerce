@@ -7,29 +7,32 @@ from django.contrib.auth.models import Group
 class UsuarioSerializerTest(TestCase):
     def setUp(self):
         self.facultad = Facultad.objects.create(
-            codigo="F011", nombre="Facultad Test", siglas="FT"
+            codigo="F010",
+            nombre="Facultad de Ingeniería Pruebas",
+            siglas="FIP"
         )
         self.escuela = EscuelaProfesional.objects.create(
-            id_facultad=self.facultad, codigo="EP011", nombre="Escuela Test"
+            id_facultad=self.facultad,
+            codigo="EP010",
+            nombre="Escuela Ingeniería de Prueba"
         )
         self.usuario = Usuario.objects.create_user(
-            nombres="Ana",
-            username="ana123",
-            email="ana@test.com",
-            password="pass1234"
+            nombres="Carlos",
+            username="carlos123",
+            email="carlos@test.com",
+            id_escuela=self.escuela,
+            password="1234prueba",
+            apellido_p="Gómez",
+            apellido_m="Martínez",
+            celular="999999999",
+            codigo="U12345"
         )
-        self.usuario.id_escuela = self.escuela
-        self.usuario.apellido_p = "López"
-        self.usuario.apellido_m = "García"
-        self.usuario.celular = "987654321"
-        self.usuario.codigo = "U98765"
-        self.usuario.save()
 
     def test_usuario_serializer_valido(self):
         serializer = UsuarioSerializer(instance=self.usuario)
         data = serializer.data
-        self.assertEqual(data["username"], "ana123")
-        self.assertEqual(data["email"], "ana@test.com")
+        self.assertEqual(data["username"], "carlos123")
+        self.assertEqual(data["email"], "carlos@test.com")
 
 class GroupSerializerTest(TestCase):
     def test_group_serializer_valido(self):

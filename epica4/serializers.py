@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Etiqueta, Catalogo, Articulo, Imagen
 from epica5.models import Marca
+from epica1.models import Usuario
 
 class EtiquetaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,7 +10,7 @@ class EtiquetaSerializer(serializers.ModelSerializer):
 
 
 class CatalogoSerializer(serializers.ModelSerializer):
-    id_usuario = serializers.IntegerField(source='id_usuario.id')
+    id_usuario = serializers.PrimaryKeyRelatedField(queryset=Usuario.objects.all())
     id_marca = serializers.SerializerMethodField()
 
     class Meta:

@@ -18,14 +18,13 @@ class UsuarioModelTest(TestCase):
             nombres="Carlos",
             username="carlos123",
             email="carlos@test.com",
-            password="1234prueba"
+            id_escuela=self.escuela,
+            password="1234prueba",
+            apellido_p="Gómez",
+            apellido_m="Martínez",
+            celular="999999999",
+            codigo="U12345"
         )
-        self.usuario.id_escuela = self.escuela
-        self.usuario.apellido_p = "Gómez"
-        self.usuario.apellido_m = "Martínez"
-        self.usuario.celular = "999999999"
-        self.usuario.codigo = "U12345"
-        self.usuario.save()
 
     def test_creacion_usuario(self):
         self.assertEqual(self.usuario.username, "carlos123")
@@ -39,6 +38,8 @@ class UsuarioModelTest(TestCase):
     def test_campos_extra(self):
         self.assertEqual(self.usuario.celular, "999999999")
         self.assertEqual(self.usuario.codigo, "U12345")
+        self.assertEqual(self.usuario.apellido_p, "Gómez")
+        self.assertEqual(self.usuario.apellido_m, "Martínez")
 
     def test_relacion_escuela(self):
         self.assertEqual(self.usuario.id_escuela, self.escuela)

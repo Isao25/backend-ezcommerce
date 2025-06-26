@@ -18,25 +18,25 @@ class MarcaSerializerTest(TestCase):
             codigo="EP010",
             nombre="Escuela Ingeniería de Prueba"
         )
-
-        self.usuario = Usuario.objects.create(
-            nombres="Shamir",
-            username="isaoIsao25",
-            email="isao25@test.com",
+        self.usuario = Usuario.objects.create_user(
+            nombres="Carlos",
+            username="carlos123",
+            email="carlos@test.com",
+            id_escuela=self.escuela,
             password="1234prueba",
-            id_escuela = self.escuela,
-            apellido_p = "Mantquisha",
-            apellido_m = "Flowers",
-            celular = "999999999",
-            codigo = "22200303"
+            apellido_p="Gómez",
+            apellido_m="Martínez",
+            celular="999999999",
+            codigo="U12345"
         )
+
 
     def test_marca_create(self):
         data = {
             'nombre': 'Marca Serializer',
             'descripcion': 'Descripción desde serializer',
             'logo': 'https://example.com/logo3.png',
-            'id_usuario': {'id': self.usuario.id}
+            'id_usuario': self.usuario.id
         }
         serializer = MarcaSerializer(data=data)
         self.assertTrue(serializer.is_valid(), serializer.errors)
@@ -57,8 +57,26 @@ class PlanSerializerTest(TestCase):
 
 class MembresiaSerializerTest(TestCase):
     def setUp(self):
-        self.usuario = Usuario.objects.create(
-            username='membresiauser', email='mem@example.com', nombres='Nombre', apellido_p='ApeP', apellido_m='ApeM', celular='911111111', codigo='MEM999'
+        self.facultad = Facultad.objects.create(
+            codigo="F010",
+            nombre="Facultad de Ingeniería Pruebas",
+            siglas="FIP"
+        )
+        self.escuela = EscuelaProfesional.objects.create(
+            id_facultad=self.facultad,
+            codigo="EP010",
+            nombre="Escuela Ingeniería de Prueba"
+        )
+        self.usuario = Usuario.objects.create_user(
+            nombres="Carlos",
+            username="carlos123",
+            email="carlos@test.com",
+            id_escuela=self.escuela,
+            password="1234prueba",
+            apellido_p="Gómez",
+            apellido_m="Martínez",
+            celular="999999999",
+            codigo="U12345"
         )
         self.marca = Marca.objects.create(
             id_usuario=self.usuario,

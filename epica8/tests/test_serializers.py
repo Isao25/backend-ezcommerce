@@ -16,22 +16,22 @@ class ReporteSerializerTest(TestCase):
             codigo="EP010",
             nombre="Escuela Ingeniería de Prueba"
         )
-
-        self.usuario = Usuario.objects.create(
-            nombres="Shamir",
-            username="isaoIsao25",
-            email="isao25@test.com",
+        self.usuario = Usuario.objects.create_user(
+            nombres="Carlos",
+            username="carlos123",
+            email="carlos@test.com",
+            id_escuela=self.escuela,
             password="1234prueba",
-            id_escuela = self.escuela,
-            apellido_p = "Mantquisha",
-            apellido_m = "Flowers",
-            celular = "999999999",
-            codigo = "22200303"
+            apellido_p="Gómez",
+            apellido_m="Martínez",
+            celular="999999999",
+            codigo="U12345"
         )
+
 
     def test_reporte_create(self):
         data = {
-            'id_usuario': {'id': self.usuario.id},
+            'id_usuario': self.usuario.id,
             'titulo': 'Reporte Serializer',
             'descripcion': 'Descripción desde serializer',
         }

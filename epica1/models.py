@@ -17,27 +17,33 @@ class Group(models.Model):
 
 
 class UsuarioManager(BaseUserManager):
-    def create_user(self, nombres, username, email, password = None):
+    def create_user(self, nombres, username, email, id_escuela, password = None, **extra_fields):
         if not email:
             raise ValueError("El usuario debe registrar un correo electrónico")
+        if not id_escuela:
+            raise ValueError("El usuario debe tener una escuela asociada")
         
         user = self.model(
             nombres = nombres,
             username = username,
             email = self.normalize_email(email),
-            password = make_password(password, salt=None, hasher='default')
+            id_escuela=id_escuela,
+            password = make_password(password, salt=None, hasher='default'),
+            **extra_fields
         )
 
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, nombres, username, email, password):
+    def create_superuser(self, nombres, username, email, id_escuela, password, **extra_fields):
         user = self.create_user(
             nombres = nombres,
             username = username,
             email = email,
-            password = password
+            id_escuela=id_escuela,
+            password = password,
+            **extra_fields
         )
         user.usuario_administrador = True
         user.save()
@@ -70,7 +76,7 @@ class Usuario(AbstractBaseUser):
     objects = UsuarioManager()
 
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["email", "nombres"]
+    REQUIRED_FIELDS = ["email", "nombres", "id_escuela"]
     
     def __str__(self):
         return f"{self.nombres} {self.apellido_p} {self.apellido_m}"
@@ -94,9 +100,7 @@ class Usuario(AbstractBaseUser):
         return self.usuario_administrador
 
     def save(self, *args, **kwargs): # Hasheo de contraseñas
-        is_new = self._state.adding # Verifica si el objeto es nuevo (si es una creación)
-        if self.password and not self.password.startswith(('pbkdf2_sha256$', 'bcrypt$', 'argon2')):
-            self.password = make_password(self.password)
+        is_new = self._state.adding # Verifica si el objeto es nuevo (si es una creación)        
         super().save(*args, **kwargs)
 
         if is_new:

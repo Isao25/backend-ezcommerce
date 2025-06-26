@@ -13,11 +13,11 @@ class FacultadViewSetTest(APITestCase):
         )
 
     def test_list_facultades(self):
-        response = self.client.get("/epica2/facultades/")
+        response = self.client.get("/facultades/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_retrieve_facultad(self):
-        response = self.client.get(f"/epica2/facultades/{self.facultad.id}/")
+        response = self.client.get(f"/facultades/{self.facultad.id}/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 class EscuelaProfesionalViewSetTest(APITestCase):
@@ -35,9 +35,9 @@ class EscuelaProfesionalViewSetTest(APITestCase):
         )
 
     def test_list_escuelas(self):
-        response = self.client.get("/epica2/escuelas/")
+        response = self.client.get("/escuelasprofesionales/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_retrieve_escuela(self):
-        response = self.client.get(f"/epica2/escuelas/{self.escuela.id}/")
+        response = self.client.get(f"/escuelasprofesionales/{self.escuela.id}/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)

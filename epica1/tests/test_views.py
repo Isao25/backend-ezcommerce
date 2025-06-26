@@ -8,26 +8,29 @@ from django.contrib.auth.models import Group
 class UsuarioViewSetTest(APITestCase):
     def setUp(self):
         self.facultad = Facultad.objects.create(
-            codigo="F012", nombre="Facultad Test 2", siglas="FT2"
+            codigo="F010",
+            nombre="Facultad de Ingeniería Pruebas",
+            siglas="FIP"
         )
         self.escuela = EscuelaProfesional.objects.create(
-            id_facultad=self.facultad, codigo="EP012", nombre="Escuela Test 2"
+            id_facultad=self.facultad,
+            codigo="EP010",
+            nombre="Escuela Ingeniería de Prueba"
         )
         self.usuario = Usuario.objects.create_user(
-            nombres="Luis",
-            username="luis123",
-            email="luis@test.com",
-            password="testpass"
+            nombres="Carlos",
+            username="carlos123",
+            email="carlos@test.com",
+            id_escuela=self.escuela,
+            password="1234prueba",
+            apellido_p="Gómez",
+            apellido_m="Martínez",
+            celular="999999999",
+            codigo="U12345"
         )
-        self.usuario.id_escuela = self.escuela
-        self.usuario.apellido_p = "Perez"
-        self.usuario.apellido_m = "Suarez"
-        self.usuario.celular = "123456789"
-        self.usuario.codigo = "U54321"
-        self.usuario.save()
 
     def test_list_usuarios(self):
-        url = "/api/usuarios/"
+        url = "/usuarios/"
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.data), 1)
@@ -37,7 +40,7 @@ class GroupViewSetTest(APITestCase):
         self.grupo = Group.objects.create(name="Testers")
 
     def test_list_grupos(self):
-        url = "/api/grupos/"
+        url = "/roles/"
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.data), 1)
