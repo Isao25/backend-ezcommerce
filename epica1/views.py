@@ -12,9 +12,18 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     
-    def get_permissions(self):  
-        permission_classes = [permissions.AllowAny]
+    def get_permissions(self):
+        if self.action in ['update', 'partial_update', 'destroy']:
+            permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+        else:
+            permission_classes = [permissions.AllowAny]
         return [permission() for permission in permission_classes]
+    
+    def perform_destroy(self, instance):
+        instance.delete()
+    
+    def perform_update(self, serializer):
+        serializer.save()
     
 #ViewSet de Group
 class GroupViewSet(viewsets.ModelViewSet):
