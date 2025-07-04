@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework import permissions
-from .serializers import UsuarioSerializer, GroupSerializer
+from rest_framework import permissions, generics
+from .serializers import UsuarioSerializer, GroupSerializer, UsuarioVendedorSerializer
 from .models import Usuario, Group
 from rest_framework.permissions import AllowAny
 #ViewSet de Usuario
@@ -12,7 +12,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     
-    def get_permissions(self):
+    def get_permissions(self):  
         permission_classes = [permissions.AllowAny]
         return [permission() for permission in permission_classes]
     
@@ -34,3 +34,10 @@ class GroupViewSet(viewsets.ModelViewSet):
 
         return [permission() for permission in permission_classes]
 
+class VendedoresViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Endpoint para listar vendedores (solo lectura)
+    """
+    queryset = Usuario.objects.filter(es_vendedor=True)
+    serializer_class = UsuarioVendedorSerializer
+    permission_classes = [permissions.AllowAny]

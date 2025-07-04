@@ -39,6 +39,7 @@ router = routers.DefaultRouter()
 # epica1
 router.register(r'usuarios', views_epica1.UsuarioViewSet)
 router.register(r'roles', views_epica1.GroupViewSet)
+router.register(r'vendedores', views_epica1.VendedoresViewSet, basename='vendedores')
 
 # epica2
 router.register(r'facultades', views_epica2.FacultadViewSet)
@@ -68,13 +69,14 @@ router.register(r'reporte', views_epica8.ReporteViewSet)
 
 
 urlpatterns = [
+    path('api/', include('epica1.urls')),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("admin/", admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),    
+    
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
